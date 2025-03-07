@@ -1,0 +1,202 @@
+.homeSlide4-container{
+    height: 100%;
+    background-color: black;
+    padding: 20px;
+}
+
+.slide4-top {
+    width: 100%;
+    height: 28%;
+    color: white;
+    padding: 0px 25px;
+}
+.slide4-top h1 {
+    background: linear-gradient(to bottom, #ffd700, #000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+}
+.slide4-top h3 {
+    text-transform: none;
+    width: 50%;
+}
+.slide4-top .underline {
+    width: 90%;
+    height: 2px;
+    background-color: yellow;
+    margin-top: 10px;
+}
+.slide4-bottom{
+    width: 100%;
+    height: 70%;
+}
+.filter-buttons {
+    display: flex;
+    gap: 20px;
+}
+
+.filter-button {
+    padding: 1px 20px;
+    border-radius: 25px;
+    border: 2px solid transparent;
+    background: linear-gradient(black, black) padding-box, 
+                linear-gradient(225.08deg, #000000 0.07%, #ffffff 50%, #4D4D4D 99.93%) border-box;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.filter-button:hover {
+    color: #FFEA00;
+    background: linear-gradient(to right, rgba(255, 234, 0, 0.2), black) padding-box, 
+                linear-gradient(225.08deg, #000000 0.07%, #FFEA00 50%, #4D4D4D 99.93%) border-box;
+}
+
+
+.filter-button.active {
+    background: yellow;
+    border-color: yellow;
+    color: black;
+}
+.filter-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+.slide4-bottom-card{
+    height: 80%;
+    width: 100%;
+}
+.slide-bottom-row{
+    height: 10%;
+    width: 98%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+}
+.product-grid {
+    display: flex;
+    gap: 25px;
+    overflow-x: auto;
+    padding: 10px;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.product-card {
+    border-radius: 15px;
+    overflow: hidden;
+    width: 260px;
+    height: 100%;
+    color: white;
+    position: relative;
+}
+.product-card::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40%;
+    background: linear-gradient(to top, black, transparent);
+    filter: blur(0px);
+    opacity: 0.7;
+    pointer-events: none; 
+}
+  
+.badge {
+    position: absolute;
+    top: -13px;
+    left: 8px;
+    background: yellow;
+    color: black;
+    padding: 2px 12px;
+    border-radius: 15px;
+    height: 25px;
+}
+
+.overlay {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+.product-details {
+    padding: 10px;
+    text-align: left;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+.price-rating {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+.price del {
+    margin-left: 5px;
+}
+.rating {
+    display: flex;
+    align-items: center;
+}
+.line {
+    flex-grow: 1;
+    height: 1px;
+    background: linear-gradient(to right, yellow, transparent);
+}
+.nav-button {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.5);
+    background: transparent;
+    font-size: 22px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}.nav-button:hover {
+    border-color: yellow;
+    color: yellow;
+}
+
+.next {
+    width: 60px;
+    height: 40px;
+    margin-left: 10px;
+    border-radius: 50px;
+    border: 2px solid transparent;
+    background: linear-gradient(black, black) padding-box, linear-gradient(to right, yellow, rgba(255, 255, 0, 0.2)) border-box;
+    color: yellow;
+}
+
+.next:hover {
+    background: linear-gradient(to right, yellow, rgba(255, 255, 0, 0.2));
+    color: black;
+}
+.store-button {
+    position: relative;
+    display: inline-block;
+    text-transform: uppercase;
+    color: #FFEA00;
+    border-radius: 8px;
+    text-align: center;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+    border: none;
+  }
+  .store-button::before {
+    content: "";
+    position: absolute;
+    border-radius: 8px;
+    padding: 2.5px;
+    background: linear-gradient(225.08deg, #000000 0.07%, #FFEA00 50%, #4D4D4D 99.93%);
+  }
+  
+  .store-button:hover {
+    background: linear-gradient(to right, yellow, rgba(255, 255, 0, 0.2));
+    color: black;
+  }
+
