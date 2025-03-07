@@ -12,6 +12,7 @@ import propertyFive from "../components/Assets/property-5.png";
 import propertySix from "../components/Assets/property-6.png";
 import rightArrow from "../components/Assets/rightarrow.png";
 
+
 const Portfolio = () => {
   return (
     
