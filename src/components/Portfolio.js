@@ -1,5 +1,6 @@
 import React from 'react'
 import Navbar from './Navbar';
+import Footer from "./Footer"
 import "../Styles/Portfolio.css";
 import Ikea from "../components/Assets/Ikea.png";
 import AdidasImg from "../components/Assets/Adidas.png";
@@ -22,7 +23,7 @@ const Portfolio = () => {
         <div> 
           <h2 className="gradient-text">PORTFOLIO</h2>
         </div>
-        <div>
+        <div className="title-animate">
         <div className="title-1">
             <span className="optimize">Optimize.</span>
             </div>
@@ -31,7 +32,7 @@ const Portfolio = () => {
             </div>
             <div className="title-3">
             <span className="disrupt">Disrupt</span>
-            </div>   
+            </div>  
             </div>    
         <div className="subtitle">
             Success Stories That Demonstrate Our Expertise To Deliver Technology-Led Business Breakthroughs Across Startups, Global Brands, And Fortune 500s
@@ -166,6 +167,7 @@ const Portfolio = () => {
         </a>
     </div>
 </div>
+<Footer/>
 </div>
   )
 }
