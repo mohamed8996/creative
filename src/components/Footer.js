@@ -25,8 +25,6 @@ const HomeSlide6 = () => {
     );
   };
 
-  //test
-
   return (
     <div className="home-slide-container">
       <div className="footerbg h-[40%]">
