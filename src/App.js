@@ -4,6 +4,8 @@ import Upcoming from "./components/Upcoming";
 import LoadingScreen from "./components/LoadingScreen";
 import HomeScreen from "./components/HomeScreen";
 import Portfolio from "./components/Portfolio";
+import Blogs from  "./components/Blogs";
+import Test from  "./components/Test";
 
 const App = () => {
   return (
@@ -13,6 +15,8 @@ const App = () => {
         <Route path="/home" element={<HomeScreen />} />
         <Route path="/upcoming" element={<Upcoming />} />
         <Route path="/portfolio" element={<Portfolio />} />
+        <Route path="/blogs" element={<Blogs />} />
+        <Route path="/test" element={<Test />} />
       </Routes>
     </Router>
   );
