@@ -11,9 +11,10 @@ import propertyFour from "../components/Assets/property-4.png";
 import propertyFive from "../components/Assets/property-5.png";
 import propertySix from "../components/Assets/property-6.png";
 import rightArrow from "../components/Assets/rightarrow.png";
+import { motion } from "framer-motion";
 
 
-const Portfolio = () => {
+const Portfolio = () => { 
   return (
     
     <div>
@@ -24,7 +25,7 @@ const Portfolio = () => {
         <div> 
           <h2 className="gradient-text">PORTFOLIO</h2>
         </div>
-        <div className="title-animate">
+        {/* <div className="title-animate"> */}
         <div className="title-1">
             <span className="optimize">Optimize.</span>
             </div>
@@ -34,7 +35,7 @@ const Portfolio = () => {
             <div className="title-3">
             <span className="disrupt">Disrupt</span>
             </div>  
-            </div>    
+            {/* </div>    */}
         <div className="subtitle">
             Success Stories That Demonstrate Our Expertise To Deliver Technology-Led Business Breakthroughs Across Startups, Global Brands, And Fortune 500s
         </div>
@@ -61,7 +62,13 @@ const Portfolio = () => {
     </div>
 </div>
 
-<div className="project-container">
+<motion.div 
+            className="project-container"
+            initial={{ y: 200, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.5, ease: "easeOut" }} // Adjust duration for speed
+            viewport={{ once: false, amount: 0.2 }} // Adjust sensitivity to scroll
+        >
     <div className="project-image">
     <img src={Ikea} alt="IKEA" />
     </div>
@@ -86,15 +93,22 @@ const Portfolio = () => {
             </div>
         </div>
         <div>
-        <a classNameName="case-study-button">View Full Case Study </a>
+        <a className="case-study-button">View Full Case Study </a>
         </div>
     </div>
-</div>
+</motion.div>
 </div>
 </div>
 <div className="background-section">
 <div className="adidas-section">
-<div className="project-container">
+{/* <div className="project-container"> */}
+<motion.div 
+            className="project-container"
+            initial={{ y: 100, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.5, ease: "easeOut" }} // Adjust duration for speed
+            viewport={{ once: false, amount: 0.2 }} // Adjust sensitivity to scroll
+        >
     <div className="case-study-container">
         <div className="company-name">ADIDAS</div>
         <div className="company-description">Scores The Perfect Digital Landing in UAE</div>
@@ -121,7 +135,8 @@ const Portfolio = () => {
     <div className="project-image">
     <img src={AdidasImg} alt="Adidas" />
     </div>   
-</div>
+    </motion.div>
+{/* </div> */}
 </div>
 </div>
 <div className="button-section">
