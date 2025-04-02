@@ -2,11 +2,19 @@
 import { useState } from "react";
 import "../Styles/HomeSlide6.css";
 import { IoArrowForwardCircleOutline } from "react-icons/io5";
-import { BiSolidPhoneCall  } from "react-icons/bi";
+import { BiSolidPhoneCall } from "react-icons/bi";
+import Footer from "./Footer";
+import axios from "axios";
 
 const HomeSlide6 = () => {
   const [selectedServices, setSelectedServices] = useState([]);
+  const [formData, setFormData] = useState({
+    name: "",
+    mail: "",
+    phone: "",
+  });
 
+  const [message, setMessage] = useState("");
   const services = [
     "Digital Marketing",
     "Web Development",
@@ -25,97 +33,107 @@ const HomeSlide6 = () => {
     );
   };
 
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setMessage("");
+
+    try {
+      const response = await axios.post("http://localhost:1337/api/contacts", {
+        data: formData,
+      });
+
+      if (response.status === 200 || response.status === 201) {
+        setMessage("Your request has been submitted!");
+        setFormData({ name: "", mail: "", phone: "" });
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setMessage("Something went wrong. Please try again.");
+    }
+  };
+
   return (
-    <div className="home-slide-container">
-      <div className="h-[75%] topper">
-      <div className=" h-[10%]"> <h2 className="contact-us">CONTACT US</h2></div>
-        <div className="main-content h-[40%]">
-          <div className="left-section">
-            <h1 className="heading">
-              SHALL WE <br /> GET <br /> STARTED?
-            </h1>
-          </div>
-          <div className="right-section">
-            <div className="services-details-container">
+    <div className="home-slide-container6">
+        <div className="home-contact">
+            <div className="home-contact-one">
               <div>
-                <p className="section-title">I'm Looking For Help In..</p>
-                <div className="service-buttons">
-                  {services.map((service) => (
-                    <button
-                      key={service}
-                      className={`service-button ${
-                        selectedServices.includes(service) ? "selected" : ""
-                      }`}
-                      onClick={() => toggleService(service)}
-                    >
-                     <h5>{service.toUpperCase()}</h5>
-                    </button>
-                  ))}
-                </div>
+              <p className="section-title">I'm Looking For Help In..</p>
+              <div className="service-buttons">
+                {services.map((service) => (
+                  <button key={service}className={`service-button ${selectedServices.includes(service) ? "selected" : ""
+                    }`}onClick={() => toggleService(service)}><h5>{service.toUpperCase()}</h5>
+                  </button>
+                ))}
               </div>
-              <div className="user-details">
-                <p className="section-title">My Detail’s</p>
-                <div className="input-group">
-                  <div className="input-row">
-                    <input
-                      type="text"
-                      placeholder="Name"
-                      className="input-field"
-                    />
-                    <input
-                      type="text"
-                      placeholder="Phone Number"
-                      className="input-field"
-                    />
-                  </div>
+              </div>
+              <div className="footer-contact">
+                <a href="tel:+917589960911" className="contact-link flex">+91 75899 60911
+                <span><IoArrowForwardCircleOutline className="h-5 w-5 mt-1 ml-2" /></span>
+                </a>
+                <a href="mailto:support@cruxxsolution.com" className="contact-link flex">support@cruxxsolution.com
+                <span><IoArrowForwardCircleOutline className="h-5 w-5 mt-1 ml-2" /></span>
+                </a>
+              </div>
+            </div>
+          <div className="p-5 rounded-xl w-[65%]">
+            <h2 className="contact-us">CONTACT US</h2>
+            <h1 className="con-heading"> SHALL WE GET STARTED?</h1>
+            <p className="con-description">
+              Thank you for your interest in Ideassion Technology Solutions.
+              Please fill out the form below.
+            </p>
+            <form onSubmit={handleSubmit}>
+              <div className="form-grid">
+                <div>
+                  <label className="label">Name</label>
+                  <input
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    className="input"
+                    required
+                  />
+                </div>
+                <div className="message-box">
+                  <label className="label">Message</label>
+                  <textarea className="input textarea"></textarea>
+                </div>
+                <div>
+                  <label className="label">Phone Number</label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    className="input"
+                    required
+                  />
+                </div>
+                <div>
+                  <label className="label">Mail Id</label>
                   <input
                     type="email"
-                    placeholder="Mail Id"
-                    className="input-field w-[50%]"
+                    name="mail"
+                    value={formData.mail}
+                    onChange={handleChange}
+                    className="input"
+                    required
                   />
                 </div>
               </div>
-            </div>
+              <div className="contact-button">
+                <button className="book-button"><h5>BOOK A CALL</h5><span className="icon-container"><BiSolidPhoneCall className="phone-icon" /></span></button>
+              </div>
+            </form>
+            {message && <p className="text-center mt-4">{message}</p>}
           </div>
-        </div>
-        <div className="contact-button h-[15%]">
-          <p>Would You Rather Directly Get In Touch? <br />We Always Have The Time For A Call Or Email!</p>
-          <button className="book-button"><h5>BOOK A CALL</h5><span className="icon-container"><BiSolidPhoneCall  className="phone-icon" /></span></button>        
-          </div>
-        <div className="footer-contact h-[10%]">
-          <a href="mailto:support@thedesigntrip.com" className="contact-link flex">Support@Thedesigntrip.Com<span><IoArrowForwardCircleOutline className="h-5 w-5 mt-1 ml-2" /></span>
-          </a>
-          <a href="tel:+917589960911" className="contact-link flex">+91 75899 60911<span><IoArrowForwardCircleOutline className="h-5 w-5 mt-1 ml-2" /></span></a>
-        </div>
       </div>
-      <div className="footerbg h-[40%]">
-        <div className="footer">
-            <div className="footer-top">
-          <div className="footer-left">
-            <h1 className="footer-logo"><h1 >cruxx</h1></h1>
-            <button className="footer-button"><h5>LET'S TALK</h5></button>
-          </div>
-          <div className="footer-right">
-            <div className="footer-right1">
-            <a href="#">Terms of Service</a>
-            <a href="#">Privacy Policy</a>
-            <a href="#">Services</a>
-            <a href="#">Portfolio</a>
-            <a href="#">About Us</a>
-            <a href="#">Blogs</a>
-            <a href="#">Contact US</a>
-          </div>
-          <div className="footer-right2">
-            <div class="scroll-to-top"><span class="arrow-up">▲</span></div>
-            <div>© 2025 Abs, Inc.</div>
-          </div>
-          </div>
-          </div>
-          <div className="footer-bottom">
-            <p>© 2025 Cruxx Solutions LLP | All rights reserved</p>
-          </div>
-        </div>
-      </div>
+      <Footer />
     </div>
   );
 };

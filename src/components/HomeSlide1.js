@@ -7,11 +7,8 @@ import stores2 from "../components/Assets/stores2.jpg";
 import stores3 from "../components/Assets/stores3.png";
 import stores4 from "../components/Assets/stores4.png";
 import stores5 from "../components/Assets/stores5.png";
-import ArrowGif from "./Assets/uparrow.gif";
 import { FaInstagram } from "react-icons/fa";
 import ParticleEffect from "./ParticalEffect";
-import { motion } from "framer-motion";
-import Slide2 from "./HomeSlide2"
 
 
 const HomeSlide1 = () => {
@@ -28,8 +25,8 @@ const HomeSlide1 = () => {
     { image: stores4, link: "https://instagram.com/example4" },
     { image: stores5, link: "https://instagram.com/example5" },
   ];
+  const itemsloop = [...items, ...items];
   const [showCursor, setShowCursor] = useState(true);
-  const [showNextScreen, setShowNextScreen] = useState(false);
 
   const handleMouseMove = (e) => {
     if (e.target.closest(".blog-container")) {
@@ -49,27 +46,15 @@ const HomeSlide1 = () => {
   }, []);
 
   useEffect(() => {
-    let direction = 1
-  
     const scrollContainer = () => {
       if (!containerRef.current) return;
   
-      const scrollWidth = containerRef.current.scrollWidth;
-      const clientWidth = containerRef.current.clientWidth;
-      const currentScroll = containerRef.current.scrollLeft;
+      const { scrollWidth, clientWidth, scrollLeft } = containerRef.current;
   
-      if (direction === 1) {
-        if (currentScroll + clientWidth >= scrollWidth) {
-          direction = -1;
-        } else {
-          containerRef.current.scrollBy({ left: clientWidth / 2, behavior: "smooth" });
-        }
+      if (scrollLeft + clientWidth >= scrollWidth) {
+        containerRef.current.scrollLeft = 0;
       } else {
-        if (currentScroll <= 0) {
-          direction = 1;
-        } else {
-          containerRef.current.scrollBy({ left: -clientWidth / 2, behavior: "smooth" });
-        }
+        containerRef.current.scrollBy({ left: clientWidth / 2, behavior: "smooth" });
       }
     };
   
@@ -100,16 +85,12 @@ const HomeSlide1 = () => {
   }, []);  
 
   return (
-    <div className="homeslide-container px-10" onMouseMove={handleMouseMove}>
-      {/* <img src={ArrowGif}alt="Animation"className="fixed bottom-5 right-5 w-10 h-10 rotate-[-225deg]" onClick={() => setShowNextScreen(true)}/> */}
-      {/* <img src={ArrowGif}alt="Animation"className="fixed bottom-5 right-5 w-10 h-10 rotate-[-225deg]"/> */}
-      { !showNextScreen && showCursor && (
+    <div className="homeslide-container" onMouseMove={handleMouseMove}>
+      <Navbar />
+      {showCursor && (
       <div className="cursor-light" style={{ top: `${cursorPosition.y}px`, left: `${cursorPosition.x}px`}}></div>)}
-      <div className="navbar-container">
-        <Navbar />
-      </div>
       <div className="content-container">
-        <div className="content p-10">
+        <div className="content-div">
           <div className="abi">
             <div className="header-content">
               {" "}
@@ -129,14 +110,14 @@ const HomeSlide1 = () => {
               </button>
             </div>
           </div>
-          <div className="text-banner">
-            <h6>
+          <div className="home-text-banner">
+            <p>
               LOREM IPSUM DOLOR SIT AMET CONSECTETUR.?//LOREM IPSUM LOREM IPSUM
               DOLOR SIT AMET CONSECTETUR.?//LOREM IPSUM
-            </h6>
+            </p>
           </div>
         </div>
-        <div className=" h-[100%] w-[50%] p-10">
+        <div className="content-div-side">
           <div className="blog-container">
             <div className="blog-section">
               <div className="blog-header h-[15%]">
@@ -147,7 +128,7 @@ const HomeSlide1 = () => {
                 <div class="bar"></div>
                 <div class="bar"></div>
               </div>
-                  <h2> Upcoming Blogs <img src={ArrowGif} alt="Animation" className="inline-block w-10 h-10 ml-80" /></h2>
+                  {/* <h2> Upcoming Blogs <img src={ArrowGif} alt="Animation" className="inline-block w-10 h-10 ml-80" /></h2> */}
               </div>
               <div className=" h-[75%]">
               <ParticleEffect
@@ -156,7 +137,7 @@ const HomeSlide1 = () => {
               bubble={true}
               />
                 <div className="img-container h-[80%]" ref={containerRef}>
-                  {items.map((item, index) => (
+                  {itemsloop.map((item, index) => (
                     <div key={index}
                       className={`card relative cursor-pointer ${index === activeIndex ? "active" : "inactive"}`}
                       onMouseEnter={() => setHoverIndex(index)}
@@ -164,11 +145,9 @@ const HomeSlide1 = () => {
                       onClick={() => window.open(item.link, "_blank")}
                     >
                       <img src={item.image} alt={`Card ${index}`} />
-                      {hoverIndex === index && (
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <FaInstagram className="text-white text-4xl transition-transform transform scale-100 hover:scale-110" />
-                        </div>
-                      )}
+                      <div className={`icon-overlay ${hoverIndex === index ? "opacity-100" : "opacity-0"}`}>
+                        <FaInstagram className="text-white text-4xl transition-transform transform scale-100 hover:scale-110" />
+                      </div>
                     </div>
                   ))}  
                 </div>
@@ -177,19 +156,6 @@ const HomeSlide1 = () => {
           </div>
         </div>
       </div>
-      {showNextScreen && (
-        <motion.div
-          initial={{ y: "100vh" }}
-          animate={{ y: 0 }}
-          exit={{ y: "-100vh" }}
-          transition={{ duration: 1, ease: "easeInOut" }}
-          className='slideContainer'
-          >
-       <div className='slideContainer'> 
-        <Slide2/>      
-        </div>  
-       </motion.div>
-      )}
     </div>
     // </div>
   );

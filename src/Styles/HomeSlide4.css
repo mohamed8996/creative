@@ -1,7 +1,7 @@
 .homeSlide4-container{
     height: 100%;
     background-color: black;
-    padding: 20px;
+    padding: 20px 40px;
 }
 
 .slide4-top {
@@ -21,7 +21,7 @@
     width: 50%;
 }
 .slide4-top .underline {
-    width: 90%;
+    width: 95%;
     height: 2px;
     background-color: yellow;
     margin-top: 10px;
@@ -66,8 +66,8 @@
     width: 100%;
 }
 .slide-bottom-row{
-    height: 10%;
-    width: 98%;
+    height: 15%;
+    width: 95%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -75,22 +75,28 @@
 }
 .product-grid {
     display: flex;
-    gap: 25px;
+    gap: 40px;
     overflow-x: auto;
     padding: 10px;
     height: 100%;
     justify-content: center;
     align-items: center;
-}
-.product-card {
-    border-radius: 15px;
-    overflow: hidden;
-    width: 260px;
-    height: 100%;
-    color: white;
-    position: relative;
-}
-.product-card::after {
+    }
+    .product-card {
+        width: 275px;
+        height: 365px;
+        border-radius: 15px;
+        overflow: hidden;
+        color: white;
+        position: relative;
+        border: 2px solid yellow;
+    }
+    .product-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }    
+    .product-card::after {
     content: "";
     position: absolute;
     bottom: 0;

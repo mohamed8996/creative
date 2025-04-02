@@ -9,7 +9,9 @@
     height: 100vh;
     padding: 0px;
     background-color: black;
+    overflow: hidden;
 }
+
 .loading-gif1, .loading-gif2 {
     width: 450px;
     height: 500px;
@@ -43,18 +45,6 @@
     transition: top 0.02s linear, left 0.02s linear;
     z-index: 1;
 }
-.cruxx {
-    font-family: "Bebas Neue", sans-serif;
-    font-weight: 400;
-    font-size: 90px;
-    text-transform: uppercase;
-    text-align: center;
-    background: linear-gradient(300.39deg, #FFDD33 50%, #FFF700 92.36%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    animation: zoomOutMoveUp 0.9s ease-in-out forwards;
-}
 
 .next-screen {
     display: flex;
@@ -82,19 +72,22 @@
         opacity: 1;
     }
     100% {
-        transform: scale(1) translateY(-100px);
+        transform: scale(1) translateY(-200px);
         opacity: 1;
     }
 }
 .creative-text, .next-screen p {
     opacity: 0;
     transform: translateY(30px);
-    transition: opacity 1s ease-out, transform 1s ease-out;
+    transition: opacity 1s ease-out, transform 0.5s ease-out;
 }
+.loading-container.animate-up {
+    transform: translateY(-100%);
+  }
 .next-screen.show-text .creative-text,
 .next-screen.show-text p{
     opacity: 1;
-    transform: translateY(-120px);
+    transform: translateY(-100px);
 }
 .content-up {
     position: absolute;
@@ -109,12 +102,11 @@
     align-items: center;
     justify-content: center;
 }
+.content-up.content-down{
+    /* opacity: 0; */
+    transform: translate(-50%, -50%);
+}
 .creative-text {
-    /* font-family: 'Montserrat', sans-serif;
-    font-weight: 300;
-    font-size: 50px;
-    text-align: center;
-    align-items: center; */
     color: rgba(255, 255, 255, 1);
 }
 @keyframes colorChange {
@@ -194,7 +186,7 @@
     }
 }
 
-@keyframes expandImage {
+/* @keyframes expandImage {
     0% { height: 10vh; opacity: 0.1; }
     100% { height: 80vh; opacity: 1; }
 }
@@ -208,4 +200,96 @@
     background-size: 100% auto;
     animation: expandImage 2s ease-in forwards;
     transform: translateY(-50%)
+} */
+@keyframes expandImage {
+    0% { height: 10vh; opacity: 0.1; }
+    100% { height: 80vh; opacity: 1; }
+}
+
+@keyframes contractImage {
+    0% { height: 80vh; opacity: 1; }
+    100% { height: 10vh; opacity: 0.1; }
+}
+
+.expanding-image {
+    position: absolute;
+    top: 60%;
+    left: 0;
+    width: 100%;
+    background: url('../components/Assets/vectors.svg') no-repeat center center;
+    background-size: 100% auto;
+    animation: expandImage 2s ease-in forwards;
+    transform: translateY(-50%);
+}
+
+.expanding-image.animate-out {
+    animation: contractImage 2s ease-in forwards;
+}
+
+.cruxx-container {
+    width: 160px;
+    height: 60px;
+    /* border: 1px solid red; */
+    overflow: hidden;
+    animation: zoomOutMoveUp 0.9s ease-in-out forwards;
+    position: absolute;
+}
+
+.cruxx-tex{
+    padding-top: 8px;
+    /* border: 1px solid blue; */
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 80px;
+    font-weight: 500;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    text-align: center;
+    background: linear-gradient(300.39deg, #FFDD33 50%, #FFF700 92.36%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.blocker{
+    position: absolute;
+    z-index: 2;
+    height: 150px;
+    width: 300px;
+    animation: blockerAnimation 5s infinite;
+    background-color:rgba(0, 0, 0, .9);
+    filter: blur(5px);
+}
+
+@keyframes blockerAnimation{
+0%   { transform: rotate(-70deg) translateY(-100%); }  
+25%  { transform: rotate(20deg) translateY(-80%); }
+50%  { transform: rotate(140deg) translateY(-100%); }
+75% { transform: rotate(210deg) translateY(-80%); }
+100%   { transform: rotate(290deg) translateY(-100%); }  
+}   
+.cruxx-move {
+    position: absolute;
+    top: -210px;
+    left: 30px;
+    transform: translateX(0); /* Ensure transform is set initially */
+    transition: transform 2.5s ease-in-out;
+}
+.move-right1 {
+    position: absolute;
+    top: -310px;
+    right: 30px;
+    transform: translateX(50px);
+    transition: all 5s ease-in-out;
+}
+.move-right2 {
+    position: absolute;
+    top: -270px;
+    right: 30px;
+    transform: translateX(50px);
+    transition: all 5s ease-in-out;
 }

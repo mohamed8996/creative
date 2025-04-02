@@ -33,17 +33,22 @@ import reviewThree from "../components/Assets/review-3.png";
 import reviewFour from "../components/Assets/review-4.png";
 import reviewFive from "../components/Assets/review-5.png";
 import ads from "../components/Assets/ads.png";
+import { useNavigate } from 'react-router-dom';
 
-const images = [slideOne, slideTwo, slideThree, slideTwo];
+const images = [slideOne, slideTwo, slideThree, slideTwo, slideOne, slideTwo, slideThree, slideTwo, slideOne, slideTwo, slideThree, slideTwo];
 
 const Blogs = () => {
   const scrollRef = useRef(null);
+  const navigate = useNavigate();
   const { scrollYProgress } = useScroll({ target: scrollRef }); 
 
   // Moves left when scrolling down, right when scrolling up
   const xMovement = useTransform(scrollYProgress, [0, 1], ["0%", "-50%"]);
 
-
+  const handleContact = () => {
+    navigate('/contact-us')
+  }
+  
   return (
     <div className="blogs-section">
         <Navbar />
@@ -69,9 +74,9 @@ const Blogs = () => {
     </div>
     <div className="blog-nav">
     <div className="blog-nav-tabs">
-        <div className="blog-nav-tab">
+        {/* <div className="blog-nav-tab">
             <input  placeholder="SEARCH" className="search-bar" />
-        </div>
+        </div> */}
         <div className="blog-nav-highlight">SHOW ALL</div>
         <div className="blog-nav-tab">ECOMMERCE & RETAIL</div>
         <div className="blog-nav-tab">FOODTECH</div>
@@ -80,11 +85,8 @@ const Blogs = () => {
         <div className="blog-nav-tab">REAL ESTATE</div>
     </div>
 </div>
-<div
-      style={{
-        maxWidth: "1200px",
-        margin: "0 auto",
-      }}
+    <div style={{ background: "#040404", width: "100%" }}>
+    <div style={{ maxWidth: "1300px",margin: "10px auto 20px",padding: "0px 50px",}}
     >
       {/* Parent Grid */}
       <div
@@ -92,17 +94,21 @@ const Blogs = () => {
           display: "grid",
           gridTemplateColumns: "1fr 2fr 1fr",
           columnGap: "10px",
-          marginTop: "50px"
+          marginTop: "50px",
         }}
       >
         {/* First Grid */}
         <div>
-          <img src={containerOne} alt="property"  />
+          <img src={containerOne} alt="property" />
         </div>
-
+  
         {/* Second Grid */}
         <div
-          style={{ display: "grid", gridTemplateRows: "1fr 1fr", rowGap: "10px"}}
+          style={{
+            display: "grid",
+            gridTemplateRows: "1fr 1fr",
+            rowGap: "10px",
+          }}
         >
           {/* Second child top row */}
           <div
@@ -110,14 +116,23 @@ const Blogs = () => {
               display: "grid",
               gridTemplateColumns: "2fr 3fr",
               gap: "5px",
-              
             }}
           >
             <div>
-              <img src={containerTwo} alt="property" className="VR Headset" style={{height: "100%", objectFit: "cover"}}/>
+              <img
+                src={containerTwo}
+                alt="property"
+                className="VR Headset"
+                style={{ height: "100%", objectFit: "cover" }}
+              />
             </div>
             <div>
-              <img src={containerThree} alt="property" className="VR Headset" style={{height: "100%", objectFit: "cover"}}/>
+              <img
+                src={containerThree}
+                alt="property"
+                className="VR Headset"
+                style={{ height: "100%", objectFit: "cover" }}
+              />
             </div>
           </div>
           {/* Second Child bottom row */}
@@ -129,20 +144,32 @@ const Blogs = () => {
             }}
           >
             <div>
-              <img src={containerFive} alt="property" className="VR Headset" style={{height: "100%", objectFit: "cover"}} />
+              <img
+                src={containerFive}
+                alt="property"
+                className="VR Headset"
+                style={{ height: "100%", objectFit: "cover" }}
+              />
             </div>
             <div>
-              <img src={containerSix} alt="property" className="VR Headset" style={{height: "100%", objectFit: "cover"}}/>
+              <img
+                src={containerSix}
+                alt="property"
+                className="VR Headset"
+                style={{ height: "100%", objectFit: "cover" }}
+              />
             </div>
           </div>
         </div>
-
+  
         {/* Third Grid */}
         <div>
           <img src={containerFour} alt="property" className="VR Headset" />
         </div>
       </div>
     </div>
+  </div>
+  
     <div className="what-new-bg-image">
     <div className="what-new-today">
     <h2 className="what-new-today-head">WHAT NEW TODAY</h2>
@@ -153,7 +180,7 @@ const Blogs = () => {
             <div>
             <img src={todayTwo} alt="laptop"  />
             </div>
-            <div>
+            <div className='titles'>
              <p className="title-one">Electronics</p>
              <p className="title-two">Best VR Box For The Best <br/> Gaming Experience</p>
              <p className="title-three">March 8, 2025</p>
@@ -163,7 +190,7 @@ const Blogs = () => {
             <div>
             <img src={todayThree} alt="laptop"  />
             </div>
-            <div>
+            <div  className='titles'>
              <p className="title-one">Electronics</p>
              <p className="title-two">Buy Your Best Laptop & <br/> Mobile Combo For Style</p>
              <p className="title-three">March 8, 2025</p>
@@ -173,7 +200,7 @@ const Blogs = () => {
             <div>
             <img src={todayFour} alt="laptop"  />
             </div>
-            <div>
+            <div className='titles'>
              <p className="title-one">Electronics</p>
              <p className="title-two">Best Smart Pencil For The Top <br/> Designer</p>
              <p className="title-three">March 8, 2025</p>
@@ -342,16 +369,6 @@ const Blogs = () => {
             </div>
     </div>
 
-    <div className="banner-container">
-    <div className="banner-heading">Put Our Full Experience Of Solving The Challenges Of</div>
-    <div className="banner-industries">
-      <span className="highlight">FinTech, ECommerce, Healthcare, Aviation,</span> And 20+ Other Industries To Your Benefit
-    </div>
-    <a href="#" className="cta-button">
-      TALK TO OUR EXPERTS <span className="arrow"><img src={rightArrow} alt="arrow" /></span>
-    </a>
-  </div>
-
   <div className="section-container">
         <div className="floating-circle-1 circle-1">
         <img src={propertyOne} alt="property" className="circle-icon" />
@@ -373,15 +390,13 @@ const Blogs = () => {
         </div>
         
         <div>
-        <h2 className="heading">Our Agile Solutions Have Resulted In Recurring <br/> Collaborations With Leading Enterprises Like <br/> IKEA, Adidas, KPMG, And Many More.</h2>
+        <h2 className="heading text-white">Our Agile Solutions Have Resulted In Recurring <br/> Collaborations With Leading Enterprises Like <br/> IKEA, Adidas, KPMG, And Many More.</h2>
         </div>
-
-        <a href="#" className="cta-button">
-            PARTNER WITH US
-            <span className="arrow-icon"><img src={rightArrow} alt="arrow" /></span>
+        <a href="" className="cta-button" onClick={handleContact}>PARTNER WITH US
+          <span className="arrow-icon"> <img src={rightArrow} alt="arrow" /></span>
         </a>
     </div>
-    <Footer />    
+  <Footer />
     </div>
   )
 }

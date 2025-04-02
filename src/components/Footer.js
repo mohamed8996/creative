@@ -1,57 +1,53 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { useState } from "react";
-import "../Styles/HomeSlide6.css";
-import { IoArrowForwardCircleOutline } from "react-icons/io5";
-import { BiSolidPhoneCall  } from "react-icons/bi";
+import "../Styles/Footer.css";
+import ParticleEffect from "./ParticalEffect";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
-const HomeSlide6 = () => {
-  const [selectedServices, setSelectedServices] = useState([]);
-
-  const services = [
-    "Digital Marketing",
-    "Web Development",
-    "Graphic Designing",
-    "UI/UX",
-    "Photo/ Videography",
-    "Branding",
-    "Event Management",
-  ];
-
-  const toggleService = (service) => {
-    setSelectedServices((prev) =>
-      prev.includes(service)
-        ? prev.filter((s) => s !== service)
-        : [...prev, service]
-    );
-  };
+const Footer = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+    
+  const handleToContact = () => {
+    navigate('/contact-us')
+  }
 
   return (
-    <div className="home-slide-container">
-      <div className="footerbg h-[40%]">
-        <div className="footer">
-            <div className="footer-top">
-          <div className="footer-left">
-            <h1 className="footer-logo"><h1 >cruxx</h1></h1>
-            <button className="footer-button"><h5>LET'S TALK</h5></button>
+    <div className="footerbg relative overflow-hidden h-[40%]"> 
+      <ParticleEffect
+        positions={["top-left", "position-r8-c3", "position-r2-c4", "position-r6-c9", "position-r9-c7"]}
+        particlesPerPosition={5}
+      />
+      <div className="footeru">
+        <div className="footeru-top">
+          <div className="footeru-left">
+           <div className="cruxx-footer-container"> <h1 className="cruxx-footer"> CRUXX <div className="cruxx-footer-blocker" /></h1></div>
+            <button className="footeru-button" onClick={handleToContact}><h5>LET'S TALK</h5></button>
           </div>
-          <div className="footer-right">
-            <div className="footer-right1">
-            <a href="#">Terms of Service</a>
-            <a href="#">Privacy Policy</a>
-            <a href="#">Services</a>
-            <a href="#">Portfolio</a>
-            <a href="#">About Us</a>
-            <a href="#">Blogs</a>
-            <a href="#">Contact US</a>
+          <div className="footeru-rightu">
+            <div className="footeru-right1">
+              <Link to="" className={location.pathname === "/terms-of-service" ? "active-page" : ""}>Terms of Service</Link>
+              <Link to="" className={location.pathname === "/privacy-policy" ? "active-page" : ""}>Privacy Policy</Link>
+              <Link to="/services" className={location.pathname === "/services" ? "active-page" : ""}>Services</Link>
+              <Link to="/portfolio" className={location.pathname === "/portfolio" ? "active-page" : ""}>Portfolio</Link>
+              <Link to="/about-us" className={location.pathname === "/about-us" ? "active-page" : ""}>About Us</Link>
+              <Link to="/blogs" className={location.pathname === "/blogs" ? "active-page" : ""}>Blogs</Link>
+              <Link to="/contact-us" className={location.pathname === "/contact-us" ? "active-page" : ""}>Contact Us</Link>
+            </div>
+            <div className="footeru-right2">
+              <div className="footeru-right2-left">
+                <p className="mb-4">Address</p>
+                <p>190-192, 2nd Floor, Hameed Complex, Anna Salai, Chennai 60000</p>
+              </div>
+              {/* <div className="text-xs mt-2">© 2025 Abs, Inc.</div> */}
+            </div>
           </div>
-          <div className="footer-right2">
-            <div class="scroll-to-top"><span class="arrow-up">▲</span></div>
-            <div>© 2025 Abs, Inc.</div>
-          </div>
-          </div>
-          </div>
-          <div className="footer-bottom">
-            <p>© 2025 Cruxx Solutions LLP | All rights reserved</p>
+        </div>
+        <div className="footeru-bottom">
+          <p>© 2025 Cruxx Solutions LLP | All rights reserved</p>
+          <div className="footeru-bottom-right">
+            <div className="scroll-to-top" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
+              <span className="arrow-up">▲</span>
+            </div>
           </div>
         </div>
       </div>
@@ -59,4 +55,4 @@ const HomeSlide6 = () => {
   );
 };
 
-export default HomeSlide6;
+export default Footer;

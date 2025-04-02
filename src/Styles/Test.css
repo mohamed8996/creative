@@ -1,0 +1,99 @@
+/* HTML: <div class="loaderu"></div> */
+.loaderu {
+    width: 60px;
+    aspect-ratio: 1;
+    color: #ffffff;
+    border: 2px solid;
+    box-sizing: border-box;
+    border-radius: 50%;
+    animation: l6 2s infinite linear;
+    position: relative;
+    right: 40%;
+  }
+  .loaderu:before {
+    content: "";
+    position: absolute;
+    height: 20px;
+    inset: auto calc(50% - 10px) 100%;
+    border-radius: 5px 5px 0 0;
+    background: 
+      linear-gradient(currentColor 0 0) top/100% 30%,
+      linear-gradient(currentColor 0 0) top/50% 100%;
+    background-repeat: no-repeat;
+  }
+  .loaderu:after {
+    content: "";
+    position: absolute;
+    inset: -8px -10px auto;
+    height: 15px;
+    background: 
+      radial-gradient(farthest-side,currentColor 94%,#0000) left,
+      radial-gradient(farthest-side,currentColor 94%,#0000) right;
+    background-size: 15px 15px;
+    background-repeat: no-repeat;
+  }
+  @keyframes l6 {
+    0%   {background: conic-gradient(yellow 0     ,#0000 0)}
+    12.5%{background: conic-gradient(yellow 45deg ,#0000 46deg)}
+    25%  {background: conic-gradient(yellow 90deg ,#0000 91deg)}
+    37.5%{background: conic-gradient(yellow 135deg,#0000 136deg)}
+    50%  {background: conic-gradient(yellow 180deg,#0000 181deg)}
+    62.5%{background: conic-gradient(yellow 225deg,#0000 226deg)}
+    75%  {background: conic-gradient(yellow 270deg,#0000 271deg)}
+    87.5%{background: conic-gradient(yellow 315deg,#0000 316deg)}
+    100% {background: conic-gradient(yellow 360deg,#0000 360deg)}
+  }
+
+    .containera {
+    height: 200px;
+    background-color: black
+}
+  .image-containera {
+    position: relative;
+    width: 1000px;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .imagea {
+    position: absolute;
+    transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
+    width: 85%;
+    opacity: 0;
+    visibility: hidden;
+  }
+  /* Active (Middle) */
+  .imagea.active {
+    transform: translateY(0) scale(0.9);
+    opacity: 1;
+    visibility: visible;
+    z-index: 2;
+  }
+  
+  /* Previous (Top - Moves Up & Fades) */
+  .imagea.prev {
+    transform: translateY(-100%) scale(0.4);
+    opacity: 0.3;
+    visibility: visible;
+    z-index: 1;
+  }
+  
+  /* Next (Bottom - Moves Up to Middle) */
+  .imagea.nextu {
+    transform: translateY(100%) scale(0.4);
+    opacity: 0.3;
+    visibility: visible;
+    z-index: 1;
+  }
+  
+  /* Hide All Other Images */
+  .imagea.hiddenu {
+    transform: translateY(200%);
+    opacity: 0;
+    visibility: hidden;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }

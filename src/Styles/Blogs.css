@@ -1,3 +1,8 @@
+.blogs-section{
+    background-color: #040404;
+    /* height: 100vh; */
+    padding-top: 75px;
+}
 .blogs-heading{
     font-size: 70px;
     font-weight: 500;
@@ -14,6 +19,7 @@
     text-align: center;
     padding: 80px 20px;
     overflow: hidden;
+    margin-bottom: 10px;
 }
 .blog-floating-circle {
     position: absolute;
@@ -22,14 +28,6 @@
     justify-content: center;
     z-index: 1;
 }
-.blog-floating-circle {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1;
-}
-
 .blog-circle-icon {
     width: 80%;
     height: auto;
@@ -37,54 +35,54 @@
     opacity: 0.8;
 }
 
-.blog-circle-1 {
-    width: 80px;
-    height: 80px;
-    top: 14%;
-    left: 12%;
+.blog-circle-1 { width: 80px; height: 80px; top: 14%; left: 12%; }
+.blog-circle-2 { width: 120px; height: 120px; top: 70%; right: 70%; }
+.blog-circle-3 { width: 70px; height: 70px; bottom: 20%; left: 70%; }
+.blog-circle-4 { width: 60px; height: 60px; top: 10%; left: 75%; }
+
+/* Apply zoom-in animation to circle 1 and 3 */
+.blog-circle-1, .blog-circle-3 {
+    animation-name: zoom-in;
 }
 
-.blog-circle-2 {
-    width: 120px;
-    height: 120px;
-    top: 70%;
-    right: 70%;
+/* Apply zoom-out animation to circle 2 and 4 */
+.blog-circle-2, .blog-circle-4 {
+    animation-name: zoom-out;
 }
 
-.blog-circle-3 {
-    width: 70px;
-    height: 70px;
-    bottom: 20%;
-    left: 70%;
+/* Zoom-In Animation */
+@keyframes zoom-in {
+    0% { transform: scale(0.3); }
+    50% { transform: scale(2); }
+    100% { transform: scale(0.3); }
 }
 
-.blog-circle-4 {
-    width: 60px;
-    height: 60px;
-    top: 10%;
-    left: 75%;
+/* Zoom-Out Animation */
+@keyframes zoom-out {
+    0% { transform: scale(2); }
+    50% { transform: scale(0.3); }
+    100% { transform: scale(2); }
 }
-@keyframes zoom-in-outs {
-    0% {
-      transform: scale(0.3); /* Smaller size (zoom out) */
-    }
-    50% {
-      transform: scale(2); /* Normal size */
-    }
-    100% {
-      transform: scale(0.3); /* Back to smaller size */
-    }
-  }
-  
-  .blog-floating-circle {
+
+  /* .blog-floating-circle {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100px; /* Adjust size */
+    width: 100px;
     height: 100px;
     overflow: hidden;
-    animation: zoom-in-outs 3s infinite ease-in-out; /* Apply animation */
-  }
+    animation: zoom-in-outs 3s infinite ease-in-out;
+  } */
+  .blog-floating-circle {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    animation-duration: 3s; /* Adjust speed */
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
   .blog-floating-circle-1 {
     display: flex;
     align-items: center;
@@ -93,9 +91,6 @@
     height: 100px;
     overflow: hidden;
     animation: zoom-in-outs 5s infinite ease-in-out; /* Apply animation */
-  }
-  .blogs-section{
-    background-color: #040404;
   }
   .blog-head{
     background: linear-gradient(300.39deg, #000000 4.64%, #FFDD33 50%, #FFF700 92.36%);
@@ -108,6 +103,7 @@
   .blogs-para{
     color: #ffffff;
     font-size: 20px;
+    text-align: center;
   }
   .search-bar{
     background-color: #040404;
@@ -116,7 +112,6 @@
   .blog-nav {
     display: flex;
     align-items: center;
-    margin-bottom: 30px;
     margin: 0 auto;
     max-width: 1200px;
   }
@@ -221,10 +216,27 @@
     flex-wrap: wrap;
     gap: 30px;
 }
+.titles {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 150px; /* Adjust height as needed */
+}
+
+.titles p {
+    margin: 0; /* Remove default margins */
+}
 .title-one{
     color: #F6D860;
     font-weight: 600;
     font-size: 12px;
+    background-color: #000000;
+    border-radius: 10px;
+    height: 30px;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .title-two{
     color: #ffffff;
@@ -251,6 +263,9 @@
 .top-video-reviews{
     margin-top: 50px;
     margin-bottom: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    /* max-width: 1200px; */
 }
 .top-video-reviews-head{
     background: linear-gradient(300.39deg, #000000 4.64%, #FFDD33 50%, #FFF700 92.36%);
@@ -260,6 +275,7 @@
     margin-top: 20px;
     margin-bottom: 20px;
     font-size: 35px;
+    margin-left: 140px;
 }
 .top-video-slide{
     display: flex;
